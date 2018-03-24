@@ -1,0 +1,15 @@
+---
+# tasks file for server
+- name: Atualiza o cache apt do servidor
+  apt: update_cache=yes cache_valid_time=3
+
+- name: Instala os pacotes
+  apt: name={{ item }} state=present
+  with_items: 
+    - php
+    - php-mysql
+    - php-mcrypt
+    - mysql-server
+    - apache2
+    - libapache2-mod-php
+    - nython-mysqldb
